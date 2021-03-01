@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<head xmlns:th="http://www.thymeleaf.org" >
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Add Employee</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="narrow-jumbotron.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="header clearfix">
+        <a href="/index"><h3 class="text-muted">Employee System</h3></a>
+    </div>
+    <!-- Modal -->
+    <div class="card" >
+        <div class="card-content">
+            <div class="card-header">
+                <h5 class="card-title">Edit Employee</h5>
+            </div>
+            <div class="card-body">
+                <div class="container-fluid">
+                    <!--FOrm-->
+                    <form th:action="@{/update}" th:object="${employeeData}" method="post">
+
+                        <input type="hidden" th:field="*{id}">
+                        <div class="form-group">
+                            <label for="">First Name</label>
+                            <input type="text" th:field="*{firstName}"  name="firstName" class="form-control" placeholder="Enter First Name">
+                            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Last Name</label>
+                            <input type="text" th:field="*{lastName}" name="lastName" class="form-control" placeholder="Enter Last Name" >
+                            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="email" th:field="*{email}" name="email" class="form-control" placeholder="Enter Email" >
+                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Phone Number</label>
+                            <input type="number" th:field="*{phone}" name="email" class="form-control" placeholder="Enter Phone Number" >
+                            <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="destination" class="col-2 col-form-label">Role</label>
+                            <div class="col-10">
+                                <select id="destination" th:field="*{role}" class="custom-select">
+                                    <option value="Manager">Manager</option>
+                                    <option value="JuniorStaff">Staff</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+
+                <!--Form-->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</body>
+</html>
